@@ -18,7 +18,7 @@ public class CryptoPayment implements PaymentStrategy {
     }
 
     @Override
-    public void isPaymentInfoValid() throws InvalidPaymentInfoException {
+    public void validatePaymentInfo() throws InvalidPaymentInfoException {
         if (walletAddress == null || walletAddress.length() < MIN_WALLET_LENGTH) {
             throw new InvalidPaymentInfoException(
                     "Invalid wallet address: must be at least " +
@@ -35,7 +35,7 @@ public class CryptoPayment implements PaymentStrategy {
 
     @Override
     public void processPayment(double amount) throws PaymentException {
-        isPaymentInfoValid();
+        validatePaymentInfo();
 
         System.out.println("Processing Cryptocurrency Payment...");
         System.out.println("Crypto Type: " + cryptoType);

@@ -25,7 +25,7 @@ public class PayPalPayment implements PaymentStrategy {
     }
 
     @Override
-    public void isPaymentInfoValid() throws InvalidPaymentInfoException {
+    public void validatePaymentInfo() throws InvalidPaymentInfoException {
         if (email == null || !email.contains("@") || !email.contains(".")) {
             throw new InvalidPaymentInfoException(
                     "Invalid email format: must contain @ and domain"
@@ -42,7 +42,7 @@ public class PayPalPayment implements PaymentStrategy {
 
     @Override
     public void processPayment(double amount) throws PaymentException {
-        isPaymentInfoValid();
+        validatePaymentInfo();
 
         System.out.println("Processing PayPal Payment...");
         System.out.println("Email: " + email);

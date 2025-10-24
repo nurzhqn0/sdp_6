@@ -39,7 +39,7 @@ public class CreditCardPayment implements PaymentStrategy {
     }
 
     @Override
-    public void isPaymentInfoValid() throws InvalidPaymentInfoException {
+    public void validatePaymentInfo() throws InvalidPaymentInfoException {
         if (cardNumber == null || cardNumber.length() != CARD_NUMBER_LENGTH) {
             throw new InvalidPaymentInfoException(
                     "Invalid card number: must be " + CARD_NUMBER_LENGTH + " digits"
@@ -67,7 +67,7 @@ public class CreditCardPayment implements PaymentStrategy {
 
     @Override
     public void processPayment(double amount) throws PaymentException {
-        isPaymentInfoValid();
+        validatePaymentInfo();
 
         System.out.println("Processing Credit Card Payment...");
         System.out.println("Card Holder: " + cardHolder);
