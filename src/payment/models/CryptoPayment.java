@@ -12,6 +12,14 @@ public class CryptoPayment implements PaymentStrategy {
     private String walletAddress;
     private String cryptoType;
 
+    public void setWalletAddress(String walletAddress) {
+        this.walletAddress = walletAddress;
+    }
+
+    public void setCryptoType(String cryptoType) {
+        this.cryptoType = cryptoType;
+    }
+
     public CryptoPayment(String walletAddress, String cryptoType) {
         this.walletAddress = walletAddress;
         this.cryptoType = cryptoType;
